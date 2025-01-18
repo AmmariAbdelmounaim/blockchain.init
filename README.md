@@ -1,36 +1,120 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Projet Next.js avec Smart Contract Ethereum
+> Une application décentralisée (dApp) utilisant Next.js, Hardhat et Wagmi
 
-## Getting Started
+## 🌟 Fonctionnalités
 
-First, run the development server:
+- Interface utilisateur moderne avec Next.js
+- Smart Contract Ethereum pour le stockage de données
+- Intégration avec MetaMask
+- Tests automatisés pour le Smart Contract
+- Configuration Hardhat pour le développement local
 
+## 🛠 Technologies Utilisées
+
+- **Frontend**:
+  - Next.js 15.1
+  - React 19.0
+  - TailwindCSS
+  - Wagmi/Viem pour l'interaction blockchain
+
+- **Backend/Blockchain**:
+  - Hardhat
+  - Solidity 0.8.19
+  - Ethers.js
+
+## 📋 Prérequis
+
+- Node.js (version récente)
+- MetaMask installé dans votre navigateur
+- Git
+
+## 🚀 Installation
+
+1. Clonez le dépôt :
+
+2. Installez les dépendances :
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Lancez la blockchain locale Hardhat :
+```bash
+npx hardhat node
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+4. Dans un nouveau terminal, déployez le smart contract :
+```bash
+cd blockchain
+npx hardhat ignition deploy modules/IncredibleStorage.ts --network localhost
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+5. Lancez l'application :
+```bash
+npm run dev
+```
 
-## Learn More
+## 📝 Structure du Projet
 
-To learn more about Next.js, take a look at the following resources:
+```
+.
+├── app/                    # Application Next.js
+├── blockchain/            # Smart Contracts et configuration Hardhat
+│   ├── contracts/        # Smart Contracts Solidity
+│   ├── test/            # Tests des Smart Contracts
+│   └── ignition/        # Modules de déploiement
+├── components/           # Composants React
+└── config/              # Configuration (wagmi, etc.)
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🔍 Fonctionnalités Principales
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Smart Contract IncredibleStorage
 
-## Deploy on Vercel
+Le contrat permet de :
+- Stocker une valeur numérique
+- Lire la valeur stockée
+- Modifier la valeur via une transaction
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Référence au contrat :
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```1:18:blockchain/contracts/incredibleStorage.sol
+//SPDX-License-Identifier: MIT
+pragma solidity >=0.4.16 < 0.9.0;
+
+contract IncredibleStorage {
+    uint awesomeUInt;
+
+    constructor(uint _awesomeUInt) {
+        awesomeUInt = _awesomeUInt;
+    }
+
+    function set(uint x) public {
+        awesomeUInt = x;
+    }
+
+    function get() public view returns (uint) {
+        return awesomeUInt;
+    }
+}
+```
+
+
+### Interface Utilisateur
+
+L'application permet aux utilisateurs de :
+- Se connecter avec MetaMask
+- Voir la valeur actuelle stockée
+- Modifier la valeur via un formulaire
+
+## 🧪 Tests
+
+Pour exécuter les tests du smart contract :
+
+```bash
+cd blockchain
+npx hardhat test
+```
+## ⚠️ Note
+
+Ce projet est configuré pour fonctionner avec une blockchain locale Hardhat. Pour le déploiement en production, des modifications supplémentaires seront nécessaires.
+
