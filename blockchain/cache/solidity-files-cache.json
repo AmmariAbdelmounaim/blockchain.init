@@ -1,0 +1,40 @@
+{
+  "_format": "hh-sol-cache-2",
+  "files": {
+    "C:\\Users\\Abdel\\OneDrive\\Bureau\\nextjs-metamask\\blockchain\\contracts\\incredibleStorage.sol": {
+      "lastModificationDate": 1737100588362,
+      "contentHash": "7ad2ffae9f58fb849528b2536b8ba8bd",
+      "sourceName": "contracts/incredibleStorage.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">=0.4.16 < 0.9.0"
+      ],
+      "artifacts": [
+        "IncredibleStorage"
+      ]
+    }
+  }
+}
